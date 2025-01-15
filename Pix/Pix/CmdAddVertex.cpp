@@ -20,9 +20,9 @@ bool CmdAddVertex::Execute(const std::vector<std::string>& params)
 	{
 		x = stof(params[0]);
 		y = stof(params[1]);
-		r = stof(params[3]);
-		g = stof(params[4]);
-		b = stof(params[5]);
+		r = stof(params[2]);
+		g = stof(params[3]);
+		b = stof(params[4]);
 	}
 	else if (params.size() == 6)
 	{
@@ -39,8 +39,9 @@ bool CmdAddVertex::Execute(const std::vector<std::string>& params)
 	}
 
 	Vertex v;
-	v.pos = {x, y, z };
+	v.pos = { x, y, z };
 	v.color = { r, g, b, 1.0f };
 	PrimitivesManager::Get()->AddVertex(v);
 	return true;
+
 }

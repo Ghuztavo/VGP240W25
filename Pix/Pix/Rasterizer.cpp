@@ -36,6 +36,11 @@ void Rasterizer::SetColor(X::Color color)
 	mColor = color;
 }
 
+void Rasterizer::SetFillMode(FillMode fillMode)
+{
+	mFillMode = fillMode;
+}
+
 void Rasterizer::DrawPoint(int x, int y)
 {
 	X::DrawPixel(x, y, mColor);
@@ -52,6 +57,7 @@ void Rasterizer::DrawLine(const Vertex& a, const Vertex& b)
 {
 	float dx = b.pos.x - a.pos.x;
 	float dy = b.pos.y - a.pos.y;
+	// if the dx is 0, we are drawing straight up(vertical line)
 	if (MathHelper::IsEqual(dx, 0.0f))
 	{
 		if (a.pos.y < b.pos.y)
@@ -96,42 +102,45 @@ void Rasterizer::DrawTriangle(const Vertex& a, const Vertex& b, const Vertex& c)
 	switch (mFillMode)
 	{
 	case FillMode::Wireframe:
-			DrawLine(a, b);
-			DrawLine(b, c);
-			DrawLine(c, a);
-			break;
+	{
+		DrawLine(a, b);
+		DrawLine(b, c);
+		DrawLine(c, a);
+	}
+		break;
 	case FillMode::Solid:
+	{
 		std::vector<Vertex> sortedVertices{ a, b, c };
 		std::sort(sortedVertices.begin(), sortedVertices.end(),
 			[](const Vertex& lhs, const Vertex& rhs)
-		{
-			return lhs.pos.y < rhs.pos.y;
-		});
+			{
+				return lhs.pos.y < rhs.pos.y;
+			});
 		DrawFilledTriangle(sortedVertices[0], sortedVertices[1], sortedVertices[2]);
+	}
 		break;
 	default:
 		break;
 	}
-	
-	
-
 }
 
 void Rasterizer::DrawFilledTriangle(const Vertex& a, const Vertex& b, const Vertex& c)
 {
 	float dy = c.pos.y - a.pos.y;
+	// if a and b match meaning the triangle has a flat bottom
 	if (MathHelper::IsEqual(a.pos.y, b.pos.y))
 		{
 			int startY = static_cast<int>(a.pos.y);
-		int endY = static_cast<int>(c.pos.y);
-		for (int y = startY; y <= endY; ++y)
-		{
-			float t = static_cast<float>(y - startY) / dy;
-			Vertex aSide = LerpVertex(a, c, t);
-			Vertex bSide = LerpVertex(b, c, t);
-			DrawLine(aSide, bSide);
-		}
+			int endY = static_cast<int>(c.pos.y);
+			for (int y = startY; y <= endY; ++y)
+			{
+				float t = static_cast<float>(y - startY) / dy;
+				Vertex aSide = LerpVertex(a, c, t);
+				Vertex bSide = LerpVertex(b, c, t);
+				DrawLine(aSide, bSide);
+			}
 	}
+	// if b and c match the triangle has a flat top
 	else if (MathHelper::IsEqual(b.pos.y, c.pos.y))
 	{
 		int startY = static_cast<int>(a.pos.y);
@@ -144,6 +153,7 @@ void Rasterizer::DrawFilledTriangle(const Vertex& a, const Vertex& b, const Vert
 			DrawLine(bSide, cSide);
 		}
 	}
+	// there are no flat top/bottom so split triangle
 	else {
 		float t = (b.pos.y - a.pos.y) / dy;
 		Vertex splitVertex = LerpVertex(a, c, t);

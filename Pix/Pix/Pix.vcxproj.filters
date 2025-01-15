@@ -117,7 +117,7 @@
     <ClCompile Include="CmdAddVertex.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
-    <ClCompile Include="CmdSetFilmMode.cpp">
+    <ClCompile Include="CmdSetFillMode.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
   </ItemGroup>

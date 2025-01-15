@@ -1,7 +1,7 @@
 #include "CmdSetFillMode.h"
 #include "Rasterizer.h"
 
-bool CmdSetFillMode::Execute()
+bool CmdSetFillMode::Execute(const std::vector<std::string>& params)
 {
 	if (params.size() < 1)
 	{

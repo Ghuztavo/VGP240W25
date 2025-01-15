@@ -16,7 +16,7 @@ public:
 
 public:
 	void SetColor(X::Color color);
-	void SetFillMode(FillMode mode);
+	void SetFillMode(FillMode fillMode);
 
 	void DrawPoint(int x, int y);
 	void DrawPoint(const Vertex& vertex);

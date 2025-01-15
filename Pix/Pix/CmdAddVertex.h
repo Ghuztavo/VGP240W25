@@ -19,7 +19,7 @@ public:
 			"-Vertex(x, y, r, g, b).\n"
 			"-Vertex(x, y, z, r, g, b).\n"
 			"\n"
-			"-sends vertices to rasterizer to render.\n";
+			"-sends vertex to the primitives manager before render\n";
 
 	}
 

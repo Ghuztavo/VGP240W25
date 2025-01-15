@@ -15,7 +15,7 @@ public:
 	{
 		return "EndDraw()\n"
 			"\n"
-			"- sends vertices to render\n";
+			"- sends vertices to rasterizer to render\n";
 
 	}
 

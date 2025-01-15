@@ -8,11 +8,16 @@ class CmdSetFillMode : public Command
 public:
 	const char* GetName() override
 	{
-		return "setFillMode";
+		return "SetFillMode";
 	}
 
 	const char* GetDescription() override
 	{
-	return
+		return
+			"SetFillMode(fillMode)\n"
+			"\n"
+			"- sets fill mode <wireframe>, <solid>";
 	}
+
+	bool Execute(const std::vector<std::string>& params) override;
 };

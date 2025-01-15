@@ -176,7 +176,7 @@
     <ClCompile Include="CmdDrawPixel.cpp" />
     <ClCompile Include="CmdEndDraw.cpp" />
     <ClCompile Include="CmdSetColor.cpp" />
-    <ClCompile Include="CmdSetFilmMode.cpp" />
+    <ClCompile Include="CmdSetFillMode.cpp" />
     <ClCompile Include="CmdSetResolution.cpp" />
     <ClCompile Include="CmdVarFloat.cpp" />
     <ClCompile Include="CommandDictionary.cpp" />
