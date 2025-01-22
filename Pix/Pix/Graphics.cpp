@@ -1,6 +1,7 @@
 #include "Graphics.h"
 
 #include "Viewport.h"
+#include "Clipper.h"
 
 void Graphics::NewFrame()
 {
