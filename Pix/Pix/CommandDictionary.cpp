@@ -15,6 +15,8 @@
 #include "CmdSetClipping.h"
 
 
+
+
 CommandDictionary* CommandDictionary::Get()
 {
 	static CommandDictionary sInstance;

@@ -6,4 +6,5 @@
 void Graphics::NewFrame()
 {
 	Viewport::Get()->OnNewFrame();
+	Clipper::Get()->OnNewFrame();
 }
