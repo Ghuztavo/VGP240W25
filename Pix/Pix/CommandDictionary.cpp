@@ -18,6 +18,9 @@
 #include "CmdCamera.h"
 #include "CmdSetCullMode.h"
 #include "CmdEnableDepth.h"
+#include "CmdMaterial.h"
+#include "CmdLights.h"
+
 
 
 
@@ -69,6 +72,20 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetCameraFar>();
 	RegisterCommand<CmdSetCameraFOV>();
 	
+	//Material commands
+	RegisterCommand<CmdSetMaterialEmissive>();
+	RegisterCommand<CmdSetMaterialAmbient>();
+	RegisterCommand<CmdSetMaterialDiffuse>();
+	RegisterCommand<CmdSetMaterialSpecular>();
+	RegisterCommand<CmdSetMaterialShininess>();
+
+	//Light commands
+	RegisterCommand<CmdSetLightAmbient>();
+	RegisterCommand<CmdSetLightDiffuse>();
+	RegisterCommand<CmdSetLightSpecular>();
+	RegisterCommand<CmdAddDirectionalLight>();
+	RegisterCommand<CmdAddPointLight>();
+
 }
 
 TextEditor::LanguageDefinition CommandDictionary::GenerateLanguageDefinition()
