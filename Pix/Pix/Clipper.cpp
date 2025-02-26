@@ -1,5 +1,6 @@
 #include "Clipper.h"
 #include "Viewport.h"
+#include "Rasterizer.h"
 
 const short BIT_INSIDE = 0;     // 0000
 const short BIT_LEFT = 1 << 1;  // 0001
@@ -111,6 +112,7 @@ bool Clipper::ClipLine(Vertex& a, Vertex& b)
 		return false;
 	}
 
+
 	float minX = Viewport::Get()->GetMinX();
 	float maxX = Viewport::Get()->GetMaxX();
 	float minY = Viewport::Get()->GetMinY();
@@ -175,6 +177,8 @@ bool Clipper::ClipTriangle(std::vector<Vertex>& vertices)
 	{
 		return false;
 	}
+
+	bool lerpNorm = Rasterizer::Get()->
 
 	std::vector<Vertex> newVertices;
 	for (short i = 0; i < (int)ClipEdge::Count; ++i)

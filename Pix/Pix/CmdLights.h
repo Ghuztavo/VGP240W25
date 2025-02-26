@@ -91,3 +91,21 @@ public:
 
 	bool Execute(const std::vector<std::string>& params) override;
 };
+
+class CmdAddSpotLight : public Command
+{
+public:
+	const char* GetName() override
+	{
+		return "AddSpotLight";
+	}
+	const char* GetDescription() override
+	{
+		return
+			"AddSpotLight(x, y, z, pX, pY, pZ, dX, dY, dZ, <constant>, <linear>, <quadratic>, <angle>, <decay>)\n"
+			"\n"
+			"- add spot lights to the light manager";
+	}
+
+	bool Execute(const std::vector<std::string>& params) override;
+};
