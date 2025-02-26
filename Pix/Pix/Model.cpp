@@ -111,7 +111,7 @@ const std::string& Model::GetFileName() const
 	return mFileName;
 }
 
-const Vertex& Model::GetVertex(int index) const
+const Vertex& Model::GetVertex(uint32_t index) const
 {
 	return mVertices[index];
 }

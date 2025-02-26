@@ -147,6 +147,7 @@ bool PrimitivesManager::EndDraw()
 					triangle[t].pos = MathHelper::TransformCoord(triangle[t].pos, matWorld);
 					triangle[t].posWorld = triangle[t].pos;
 				}
+				// if we dont have a normal, add one
 				if (MathHelper::IsEqual(MathHelper::MagnitudeSquared(triangle[0].norm), 0.0f))
 				{
 					Vector3 faceNormal = CreateFaceNormal(triangle);
@@ -160,7 +161,7 @@ bool PrimitivesManager::EndDraw()
 				{
 					for (size_t t = 0; t < triangle.size(); ++t)
 					{
-						triangle[t].
+						triangle[t].norm = MathHelper::TransformNormal(triangle[t].norm, matWorld);
 					}
 				}
 

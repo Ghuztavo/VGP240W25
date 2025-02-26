@@ -4,9 +4,9 @@ SetFillMode(wireframe)
 
 BeginDraw(triangle)
 
-Vertex(2, 2, 0, 0.5, 1)
-Vertex(30, 20, 1, 0.5, 0)
-Vertex(10, 24, 0.5, 1, 0.2)
+Vertex(8, 8, 1, 0.8, 1)
+Vertex(25, 18, 1, 0.5, 0.5)
+Vertex(15, 20, 0.8, 1, 0.1)
 
 EndDraw()
 
@@ -14,8 +14,9 @@ SetFillMode(solid)
 
 BeginDraw(triangle)
 
-Vertex(17, 26, 0, 0.5, 1)
-Vertex(45, 45, 1, 0.5, 0)
-Vertex(25, 49, 0.5, 1, 0.2)
+Vertex(19, 22, 0, 0.5, 1)
+Vertex(20, 45, 1, 0.5, 0.5)
+Vertex(40, 49, 0.5, 1, 1)
 
 EndDraw()
+

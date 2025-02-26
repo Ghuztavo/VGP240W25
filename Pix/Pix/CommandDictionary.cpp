@@ -25,7 +25,6 @@
 
 
 
-
 CommandDictionary* CommandDictionary::Get()
 {
 	static CommandDictionary sInstance;

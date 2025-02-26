@@ -74,6 +74,7 @@ void PointLight::SetAttenuation(float constant, float linear, float quadratic)
 	mAttenQuad = quadratic;
 }
 
+//Spot light
 X::Color SpotLight::ComputeLightColor(const Vector3& position, const Vector3& normal)
 {
 	Camera* camera = Camera::Get();

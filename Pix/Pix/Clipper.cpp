@@ -36,7 +36,7 @@ bool IsInFront(ClipEdge edge, const Vector3& pos)
 	return false;
 }
 
-Vertex ComputeIntersection(ClipEdge edge, const Vertex& vN, const Vertex& vNP1)
+Vertex ComputeIntersection(ClipEdge edge, const Vertex& vN, const Vertex& vNP1, bool lerpNorm)
 {
 	Viewport* vp = Viewport::Get();
 	float t = 0.0f;
@@ -49,7 +49,7 @@ Vertex ComputeIntersection(ClipEdge edge, const Vertex& vN, const Vertex& vNP1)
 	default: break;
 	}
 
-	return LerpVertex(vN, vNP1, t);
+	return LerpVertex(vN, vNP1, t, lerpNorm);
 }
 
 short GetOutputCode(float x, float y)
@@ -112,6 +112,7 @@ bool Clipper::ClipLine(Vertex& a, Vertex& b)
 		return false;
 	}
 
+	bool lerpNorm = Rasterizer::Get()->GetShadeMode() == ShadeMode::Phong;
 
 	float minX = Viewport::Get()->GetMinX();
 	float maxX = Viewport::Get()->GetMaxX();
@@ -157,12 +158,12 @@ bool Clipper::ClipLine(Vertex& a, Vertex& b)
 
 		if (outCode == codeA)
 		{
-			a = LerpVertex(a, b, t);
+			a = LerpVertex(a, b, t, lerpNorm);
 			codeA = GetOutputCode(a.pos.x, a.pos.y);
 		}
 		else
 		{
-			b = LerpVertex(a, b, t);
+			b = LerpVertex(a, b, t, lerpNorm);
 			codeB = GetOutputCode(b.pos.x, b.pos.y);
 		}
 		
@@ -178,7 +179,7 @@ bool Clipper::ClipTriangle(std::vector<Vertex>& vertices)
 		return false;
 	}
 
-	bool lerpNorm = Rasterizer::Get()->
+	bool lerpNorm = Rasterizer::Get()->GetShadeMode() == ShadeMode::Phong;
 
 	std::vector<Vertex> newVertices;
 	for (short i = 0; i < (int)ClipEdge::Count; ++i)
@@ -210,13 +211,13 @@ bool Clipper::ClipTriangle(std::vector<Vertex>& vertices)
 			else if (nIsInFront && !np1IsInFront)
 			{
 				//save intersection
-				newVertices.push_back(ComputeIntersection(edge, vN, vNP1));
+				newVertices.push_back(ComputeIntersection(edge, vN, vNP1, lerpNorm));
 			}
 			//case 4, nV is behind and vNP1 is in front
 			else if (!nIsInFront && np1IsInFront)
 			{
 				//save intersection and vNP1
-				newVertices.push_back(ComputeIntersection(edge, vN, vNP1));
+				newVertices.push_back(ComputeIntersection(edge, vN, vNP1, lerpNorm));
 				newVertices.push_back(vNP1);
 			}
 		}
