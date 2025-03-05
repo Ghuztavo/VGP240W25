@@ -29,7 +29,7 @@ float $rotX = 0, 0.1
 float $rotY = 0, 0.1
 float $rotZ = 0, 0.1
 
-SetShadeMode(phong)
+SetShadeMode(gouraud)
 
 SetCameraPosition($camX, $camY, $camZ)
 SetCameraDirection($camDirX, $camDirY, $camDirZ)
@@ -63,6 +63,7 @@ PushScaling(0.5, 0.5, 0.5)
 BeginDraw(triangle, true)
 Model(../Models/torus_knot.obj)
 EndDraw()
+
 
 
 
