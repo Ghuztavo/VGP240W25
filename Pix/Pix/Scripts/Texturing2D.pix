@@ -37,7 +37,11 @@ PushRotationX($rotX)
 SetCorrectUV($correctUV)
 SetUseFilter($useFilter)
 
+SetAddressMode(wrap)
+PostProcessingSetEffectType(fisheye)
+
 BeginDraw(triangle, true)
+PostProcessingBeginDraw()
 
 Vertex(-1, -1, 0, 0, 3, -1)
 Vertex(-1, 1, 0, 0, 0, -1)
@@ -46,9 +50,11 @@ Vertex(-1, -1, 0, 0, 3, -1)
 Vertex(1, 1, 0, 3, 0, -1)
 Vertex(1, -1, 0, 3, 3, -1)
 
-SetAddressMode(wrap)
-
 EndDraw()
+PostProcessingEndDraw()
+
+
+
 
 
 
