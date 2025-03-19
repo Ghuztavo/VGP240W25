@@ -210,6 +210,12 @@
     <ClCompile Include="CmdPostProcessing.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
+    <ClCompile Include="Raytracer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="CmdRaytracer.cpp">
+      <Filter>Commands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextEditor.h">
@@ -372,6 +378,18 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="CmdPostProcessing.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Raytracer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdRaytracer.h">
       <Filter>Commands</Filter>
     </ClInclude>
   </ItemGroup>
